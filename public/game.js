@@ -76,12 +76,24 @@ function checkInput(userChosenColour) {
       }
 }
 
+$('.start-btn').on("click", function (e) {
+  if (!gameStarted && document.getElementById("overlay").style.display != "block") {
+      nextSequence();
+      animateSequence(0);
+      gameStarted = true;
+      $("#level-title-1").html("");
+      $(".start-btn").style.display = "none";
+      console.log(gameStarted);
+  }
+});
+
 $(document).keydown(function (e) {
     if (!gameStarted && document.getElementById("overlay").style.display != "block") {
         nextSequence();
         animateSequence(0);
         gameStarted = true;
         $("#level-title-1").html("");
+        $(".start-btn").style.display = "none";
         console.log(gameStarted);
     }
   });
@@ -149,3 +161,4 @@ $(document).keydown(function (e) {
       $(".username-form").val($(".1").text() + $(".2").text() + $(".3").text());
       $(".form").submit();
     })
+
