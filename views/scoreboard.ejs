@@ -1,0 +1,23 @@
+<%- include('partials/header') %> 
+<h1 class="score-title"> HIGHSCORE</h1>
+<div class="mid">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="scoreboard-col">NAME</th>
+            <th scope="col" class="scoreboard-col-1">SCORE</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%scores.forEach(score => {%>
+                <tr>
+                    <th scope="row"><%=score.username %> </th>
+                    <td><%=score.score%></td>
+                  </tr>
+            <%});%>
+        </tbody>
+    </table>
+</div>
+<a href='/'>TRY AGAIN</a> 
+
+<%- include('partials/footer') %> 
