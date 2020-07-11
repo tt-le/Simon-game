@@ -10,11 +10,25 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb://localhost:27017/userGameDB", {
+
+
+//DATABASE
+const ADMIN = process.env.MONGO_ADMIN;
+const PW = process.env.MONGO_PW;
+const DBNAME = process.env.DBNAME;
+const uri = `mongodb+srv://${ADMIN}:${PW}@cluster0-iykpd.mongodb.net/${DBNAME}?retryWrites=true&w=majority`;
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
+
+// Uncomment this to use locally and comment above
+// mongoose.connect("mongodb://localhost:27017/userGameDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+// });
 
 const userSchema = mongoose.Schema({
 	username: String,
